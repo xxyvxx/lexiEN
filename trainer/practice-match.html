@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Подбор — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark"><img src="../assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a class="is-active" href="index.html">Тренажёр</a></li>
+          <li><a href="../profile/index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--narrow">
+      <div class="section-head">
+        <div>
+          <h1>Подбор</h1>
+          <p class="lead">Собери пары EN ↔ RU, пока есть время.</p>
+        </div>
+        <a class="btn btn--secondary" href="index.html?tab=practice">← К практике</a>
+      </div>
+
+      <section class="panel exam-lobby">
+        <fieldset class="exam-options">
+          <legend>Цель</legend>
+          <label class="exam-option">
+            <input type="radio" name="pairs" value="8" data-opt />
+            <span>8 пар</span>
+          </label>
+          <label class="exam-option">
+            <input type="radio" name="pairs" value="12" data-opt checked />
+            <span>12 пар</span>
+          </label>
+          <label class="exam-option">
+            <input type="radio" name="pairs" value="16" data-opt />
+            <span>16 пар</span>
+          </label>
+          <label class="exam-option">
+            <input type="radio" name="pairs" value="20" data-opt />
+            <span>20 пар</span>
+          </label>
+        </fieldset>
+
+        <fieldset class="exam-options">
+          <legend>Время</legend>
+          <label class="exam-option">
+            <input type="radio" name="minutes" value="1" data-opt />
+            <span>1 мин</span>
+          </label>
+          <label class="exam-option">
+            <input type="radio" name="minutes" value="2" data-opt checked />
+            <span>2 мин</span>
+          </label>
+          <label class="exam-option">
+            <input type="radio" name="minutes" value="3" data-opt />
+            <span>3 мин</span>
+          </label>
+        </fieldset>
+
+        <a class="btn btn--primary btn--wide" data-match-start href="match.html">Начать</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · подбор</footer>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      const start = document.querySelector("[data-match-start]");
+      // Размер поля сам: телефон 9, шире — 12
+      const cards = window.matchMedia("(max-width: 720px)").matches ? "9" : "12";
+
+      function syncHref() {
+        const pairs = document.querySelector('input[name="pairs"]:checked')?.value || "12";
+        const minutes = document.querySelector('input[name="minutes"]:checked')?.value || "2";
+        if (start) start.href = `match.html?cards=${cards}&pairs=${pairs}&minutes=${minutes}`;
+      }
+
+      document.querySelectorAll("[data-opt]").forEach((el) => el.addEventListener("change", syncHref));
+      syncHref();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Тренажёр — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark"><img src="../assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a class="is-active" href="index.html">Тренажёр</a></li>
+          <li><a href="../profile/index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--trainer">
+      <div class="section-head trainer-head">
+        <div>
+          <h1>Тренажёр</h1>
+          <p class="lead">Путь по темам или практика на повторение.</p>
+        </div>
+      </div>
+
+      <section class="panel trainer-tabs-panel" data-tabs data-trainer-tabs>
+        <div class="trainer-tabs-sticky">
+          <div class="tabs trainer-tabs" role="tablist">
+            <button type="button" class="tab is-active" data-tab="path" role="tab">Путь</button>
+            <button type="button" class="tab" data-tab="practice" role="tab">Практика</button>
+          </div>
+        </div>
+
+        <div data-panel="path" role="tabpanel">
+          <div class="trainer-units" data-trainer-units></div>
+        </div>
+
+        <div data-panel="practice" role="tabpanel" hidden>
+          <div class="practice-card-grid" data-practice-cards>
+            <a class="practice-card" href="practice-mistakes.html">
+              <span class="practice-card__icon" aria-hidden="true"><img src="../icon/tabler-alert-triangle.svg" alt="" /></span>
+              <span class="practice-card__title">Ошибки</span>
+              <span class="practice-card__desc">То, что не вышло со второй попытки</span>
+              <span class="practice-card__meta" data-practice-mistakes-count>0 заданий</span>
+            </a>
+            <a class="practice-card" href="practice-review.html">
+              <span class="practice-card__icon" aria-hidden="true"><img src="../icon/tabler-repeat.svg" alt="" /></span>
+              <span class="practice-card__title">Повторить</span>
+              <span class="practice-card__desc">Слова из уроков — тест и карточки</span>
+              <span class="practice-card__meta" data-practice-review-count>0 слов</span>
+            </a>
+            <a class="practice-card" href="practice-match.html">
+              <span class="practice-card__icon" aria-hidden="true"><img src="../icon/tabler-puzzle.svg" alt="" /></span>
+              <span class="practice-card__title">Подбор</span>
+              <span class="practice-card__desc">Пары EN ↔ RU на время</span>
+              <span class="practice-card__meta">Таймер</span>
+            </a>
+            <a class="practice-card" href="practice-vocab.html">
+              <span class="practice-card__icon" aria-hidden="true"><img src="../icon/tabler-books.svg" alt="" /></span>
+              <span class="practice-card__title">Изучение слов</span>
+              <span class="practice-card__desc">Темы и карточки по уровням</span>
+              <span class="practice-card__meta" data-practice-vocab-meta>Прогресс</span>
+            </a>
+            <a class="practice-card" href="practice-audio.html">
+              <span class="practice-card__icon" aria-hidden="true"><img src="../icon/tabler-headphones.svg" alt="" /></span>
+              <span class="practice-card__title">На слух</span>
+              <span class="practice-card__desc">Различай звуки английского</span>
+              <span class="practice-card__meta">æ · th · sh</span>
+            </a>
+            <a class="practice-card" href="practice-stories.html">
+              <span class="practice-card__icon" aria-hidden="true"><img src="../icon/tabler-book.svg" alt="" /></span>
+              <span class="practice-card__title">Рассказы</span>
+              <span class="practice-card__desc">Чтение, слова и короткий тест</span>
+              <span class="practice-card__meta">По темам</span>
+            </a>
+            <a class="practice-card" href="practice-exam.html" data-practice-exam-card hidden>
+              <span class="practice-card__icon" aria-hidden="true"><img src="../icon/icon.svg" alt="" /></span>
+              <span class="practice-card__title">Как на контрольной</span>
+              <span class="practice-card__desc">Смешанный тест из твоего прогресса</span>
+              <span class="practice-card__meta" data-practice-exam-meta>От 5 заданий</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · тренажёр</footer>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/vocab-packs.js"></script>
+    <script src="../js/audio-quiz-data.js"></script>
+    <script src="../js/theory-quiz-data.js"></script>
+    <script src="../js/lesson-content.js?v=2"></script>
+    <script src="../js/exam-pool.js"></script>
+    <script src="../js/theory-data.js"></script>
+    <script src="../js/trainer-data.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      const icons = {
+        star: `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2l2.7 6.2 6.7.6-5.1 4.4 1.5 6.5L12 16.8 6.2 19.9l1.5-6.5L2.6 9l6.7-.6L12 2.2z"/></svg>`,
+        play: `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7L8 5z"/></svg>`,
+        locked: `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 10-8 0v2H7a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2v-8a2 2 0 00-2-2zm-7-2a2 2 0 114 0v2h-4V7zm3 8.7V18h-2v-2.3a1.5 1.5 0 112 0z"/></svg>`,
+        trophy: `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3h12v2h2a2 2 0 012 2v1a5 5 0 01-4.1 4.9A5 5 0 0113 16.9V18h3v2H8v-2h3v-1.1a5 5 0 01-4.9-3.9A5 5 0 012 8V7a2 2 0 012-2h2V3zm0 2v1H4v1a3 3 0 002.8 3H6V5zm12 0v3h-.8A3 3 0 0020 8V7h-2V5zM8 20h8v1H8v-1z"/></svg>`,
+        book: `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2h11a2 2 0 012 2v16l-1.5-.9L16 20l-1.5-.9L13 20l-1.5-.9L10 20l-1.5-.9L7 20l-1.5-.9L4 20V4a2 2 0 012-2zm0 2v12.4l.5-.3.5.3.5-.3.5.3.5-.3.5.3.5-.3.5.3.5-.3.5.3.5-.3.5.3V4H6zm2 2h7v2H8V6zm0 4h7v2H8v-2z"/></svg>`,
+      };
+
+      function levelIcon(level) {
+        if (level.status === "locked") return icons.locked;
+        if (level.kind === "final") return icons.trophy;
+        if (level.kind === "dialogue") return icons.book;
+        if (level.status === "done") return icons.star;
+        return icons.play;
+      }
+
+      const root = document.querySelector("[data-trainer-units]");
+      const units = LexiTrainer.getUnits();
+
+      root.innerHTML = units
+        .map((unit, unitIndex) => {
+          const levels = unit.levels
+            .map((level, i) => {
+              const zigzag = `path-node path-node--${(i % 4) + 1}`;
+              const icon = levelIcon(level);
+              const inner = `<span class="node-btn__icon">${icon}</span>`;
+              const cls = `node-btn node-btn--${level.status}`;
+
+              if (level.status === "locked") {
+                return `<div class="${zigzag}" role="listitem"><span class="${cls}" aria-disabled="true" title="Пока закрыто">${inner}</span></div>`;
+              }
+              return `<div class="${zigzag}" role="listitem"><a class="${cls}" href="${level.href}" title="Уровень ${level.index}">${inner}</a></div>`;
+            })
+            .join("");
+
+          const { main, deep, soft } = unit.color;
+          return `
+            <section
+              class="path-unit"
+              id="unit-${unit.id}"
+              data-topic="${unit.id}"
+              style="--unit: ${main}; --unit-deep: ${deep}; --unit-soft: ${soft};"
+            >
+              <header class="unit-banner">
+                <div class="unit-banner__text">
+                  <p class="unit-banner__eyebrow">Тема ${unitIndex + 1}</p>
+                  <h2 class="unit-banner__title">${unit.title}</h2>
+                  <p class="unit-banner__desc">${unit.short}</p>
+                </div>
+                <a class="unit-banner__book" href="${unit.theoryHref}" title="Открыть теорию" aria-label="К теории по теме ${unit.title}">
+                  ${icons.book}
+                </a>
+              </header>
+              <div class="path-snake" role="list">${levels}</div>
+            </section>
+          `;
+        })
+        .join("");
+
+      function activateTab(root, tabId) {
+        if (!root || !tabId) return;
+        const tabsRow = root.querySelector(".tabs, .trainer-tabs");
+        tabsRow?.querySelectorAll("[data-tab]").forEach((t) => {
+          t.classList.toggle("is-active", t.getAttribute("data-tab") === tabId);
+        });
+        root.querySelectorAll(":scope > [data-panel]").forEach((p) => {
+          p.hidden = p.getAttribute("data-panel") !== tabId;
+        });
+      }
+
+      function wordForm(n, one, few, many) {
+        const m10 = n % 10;
+        const m100 = n % 100;
+        if (m10 === 1 && m100 !== 11) return one;
+        if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+        return many;
+      }
+
+      const mistakesCount = (LexiStore.getMistakes?.() || []).filter((m) => m.raw?.type).length;
+      const reviewCount = (LexiStore.getReviewWords?.() || []).length;
+      const mistakesMeta = document.querySelector("[data-practice-mistakes-count]");
+      const reviewMeta = document.querySelector("[data-practice-review-count]");
+      if (mistakesMeta) {
+        mistakesMeta.textContent = `${mistakesCount} ${wordForm(mistakesCount, "задание", "задания", "заданий")}`;
+      }
+      if (reviewMeta) {
+        reviewMeta.textContent = `${reviewCount} ${wordForm(reviewCount, "слово", "слова", "слов")}`;
+      }
+
+      const vocabMeta = document.querySelector("[data-practice-vocab-meta]");
+      if (vocabMeta && window.LexiVocabPacks) {
+        const packs = LexiVocabPacks.levels || [];
+        let knownAll = 0;
+        let totalAll = 0;
+        packs.forEach((lvl) => {
+          totalAll += lvl.words.length;
+          knownAll += LexiStore.getVocabProgress(lvl.id, lvl.words.length).known;
+        });
+        vocabMeta.textContent =
+          totalAll > 0
+            ? `${knownAll} / ${totalAll}`
+            : "Прогресс";
+      }
+
+      const examCard = document.querySelector("[data-practice-exam-card]");
+      const examMeta = document.querySelector("[data-practice-exam-meta]");
+      if (examCard && window.LexiExamPool) {
+        const examCount = LexiExamPool.getUnlockCount();
+        const unlocked = examCount >= LexiExamPool.MIN;
+        examCard.hidden = !unlocked;
+        if (examMeta) {
+          if (!unlocked) {
+            examMeta.textContent = `От ${LexiExamPool.MIN} заданий`;
+          } else {
+            const ids = LexiExamPool.LEVELS.map((l) => l.id);
+            const overall = LexiStore.getExamOverallProgress?.(ids) || { percent: 0, passed: 0, total: ids.length };
+            examMeta.textContent = `${overall.percent}% · зачёт ${overall.passed}/${overall.total}`;
+          }
+        }
+      }
+
+      const params = new URLSearchParams(location.search);
+      const mainTabs = document.querySelector("[data-trainer-tabs]");
+      const tab = params.get("tab");
+      const onPractice =
+        tab === "practice" || tab === "mistakes" || tab === "learned" || tab === "review";
+
+      function flashUnit(target) {
+        if (!target) return;
+        target.classList.remove("path-unit--flash");
+        void target.offsetWidth;
+        target.classList.add("path-unit--flash");
+        target.addEventListener(
+          "animationend",
+          () => target.classList.remove("path-unit--flash"),
+          { once: true }
+        );
+      }
+
+      function scrollToTopic(topicId, { smooth = false } = {}) {
+        if (!topicId) return;
+        const target = document.getElementById(`unit-${topicId}`);
+        if (!target) return;
+        target.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+        const delay = smooth ? 380 : 40;
+        setTimeout(() => flashUnit(target), delay);
+      }
+
+      /** К началу практики: явный сброс (после скрытия длинного пути браузер иначе оставляет низ). */
+      function scrollPracticeTop() {
+        const html = document.documentElement;
+        const prev = html.style.scrollBehavior;
+        html.style.scrollBehavior = "auto";
+        window.scrollTo(0, 0);
+        document.body.scrollTop = 0;
+        html.scrollTop = 0;
+        html.style.scrollBehavior = prev;
+      }
+
+      function afterTabChange(tabId) {
+        if (tabId === "practice") {
+          // Сразу + после пересчёта высоты страницы
+          scrollPracticeTop();
+          requestAnimationFrame(() => {
+            scrollPracticeTop();
+            setTimeout(scrollPracticeTop, 50);
+          });
+          return;
+        }
+        if (tabId === "path") {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              const topicId = params.get("topic") || LexiTrainer.getCurrentTopicId?.();
+              scrollToTopic(topicId, { smooth: false });
+            });
+          });
+        }
+      }
+
+      mainTabs?.querySelectorAll("[data-tab]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          afterTabChange(btn.getAttribute("data-tab"));
+        });
+      });
+
+      const focusTopic = params.get("topic");
+      if (onPractice) {
+        activateTab(mainTabs, "practice");
+        afterTabChange("practice");
+      } else {
+        activateTab(mainTabs, "path");
+        const topicId = focusTopic || LexiTrainer.getCurrentTopicId?.();
+        requestAnimationFrame(() => {
+          scrollToTopic(topicId, { smooth: Boolean(focusTopic) });
+        });
+      }
+    </script>
+  </body>
+</html>

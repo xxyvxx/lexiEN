@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Профиль — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark"><img src="../assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a href="../trainer/index.html">Тренажёр</a></li>
+          <li><a class="is-active" href="index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--narrow">
+      <!-- Вход -->
+      <section class="auth-card" data-view-login>
+        <div class="auth-card__art" aria-hidden="true">
+          <img src="../assets/08_happy.svg" alt="" />
+        </div>
+        <h1 class="auth-card__title">С возвращением!</h1>
+        <p class="auth-card__lead">Войди в свой профиль, чтобы продолжить.</p>
+        <p class="auth-banner" data-auth-banner hidden>
+          Тренажёр доступен после входа. Войди или зарегистрируйся — и можно заниматься.
+        </p>
+
+        <p class="form-error" data-login-error hidden></p>
+
+        <form class="form" data-form-login>
+          <label class="field">
+            <span>Логин</span>
+            <input name="login" type="text" autocomplete="username" required placeholder="admin" />
+          </label>
+          <label class="field">
+            <span>Пароль</span>
+            <input name="password" type="password" autocomplete="current-password" required placeholder="••••" />
+          </label>
+          <button class="btn btn--primary btn--wide" type="submit">Войти</button>
+          <p class="form-hint form-hint--demo">
+            <span>Пустой аккаунт: <strong>admin</strong> / <strong>1234</strong></span>
+            <span>С прогрессом: <strong>demo</strong> / <strong>1234</strong></span>
+          </p>
+        </form>
+
+        <p class="auth-switch">
+          Нет профиля?
+          <button type="button" class="auth-switch__btn" data-go-register>Зарегистрироваться</button>
+        </p>
+      </section>
+
+      <!-- Регистрация -->
+      <section class="auth-card" data-view-register hidden>
+        <div class="auth-card__art" aria-hidden="true">
+          <img src="../assets/03_winking.svg" alt="" />
+        </div>
+        <h1 class="auth-card__title">Давай знакомиться</h1>
+        <p class="auth-card__lead">Создай профиль — и можно учиться.</p>
+
+        <p class="form-error" data-register-error hidden></p>
+
+        <form class="form" data-form-register>
+          <label class="field">
+            <span>Логин</span>
+            <input name="login" type="text" autocomplete="username" required minlength="3" placeholder="например, masha" />
+          </label>
+          <label class="field">
+            <span>Пароль</span>
+            <input name="password" type="password" autocomplete="new-password" required minlength="4" />
+          </label>
+          <label class="field">
+            <span>Как тебя зовут?</span>
+            <input name="name" type="text" required placeholder="Имя" />
+          </label>
+          <div class="form-row">
+            <label class="field">
+              <span>Сколько лет?</span>
+              <input name="age" type="number" min="7" max="18" required placeholder="12" />
+            </label>
+            <label class="field">
+              <span>Класс</span>
+              <input name="grade" type="number" min="1" max="11" required placeholder="6" />
+            </label>
+          </div>
+          <label class="field">
+            <span>Уровень английского</span>
+            <select name="level" required>
+              <option value="A1">A1 — начинающий</option>
+              <option value="A2">A2 — базовый</option>
+              <option value="B1">B1 — средний</option>
+              <option value="B2">B2 — выше среднего</option>
+            </select>
+          </label>
+          <button class="btn btn--primary btn--wide" type="submit">Создать профиль</button>
+        </form>
+
+        <p class="auth-switch">
+          Уже есть профиль?
+          <button type="button" class="auth-switch__btn" data-go-login>Войти</button>
+        </p>
+      </section>
+
+      <!-- Профиль -->
+      <section data-view-profile hidden>
+        <div class="profile-hero">
+          <button type="button" class="profile-avatar" data-open-avatar aria-label="Сменить фото профиля">
+            <img class="emoji-dog" data-profile-avatar src="../assets/08_happy.svg" alt="" />
+            <span class="profile-avatar__edit" aria-hidden="true">✎</span>
+          </button>
+          <div class="profile-hero__text">
+            <h1 data-profile-name>Ученик</h1>
+            <p class="muted" data-profile-meta></p>
+          </div>
+          <button class="btn btn--secondary" type="button" data-open-settings>Настройки</button>
+        </div>
+
+        <div class="stat-grid" aria-label="Статистика">
+          <div class="stat">
+            <div class="stat__value" data-stat="xp">0</div>
+            <div class="stat__label">XP</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value" data-stat="streak">0</div>
+            <div class="stat__label">дней подряд</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value" data-stat="lessons">0</div>
+            <div class="stat__label">уроков</div>
+          </div>
+          <div class="stat stat--progress">
+            <div
+              class="progress-ring"
+              data-stat="progress"
+              style="--pct: 0"
+              role="img"
+              aria-label="Прогресс курса"
+            >
+              <span data-progress-pct>0%</span>
+            </div>
+            <div class="stat__label">прогресс</div>
+          </div>
+        </div>
+
+        <section class="profile-cta">
+          <div class="profile-cta__text">
+            <h2 class="profile-cta__title">Переходи учиться</h2>
+            <p class="profile-cta__desc">Теория закрепит правила, практика — слова и задания из уроков.</p>
+          </div>
+          <div class="profile-cta__actions">
+            <a class="btn btn--secondary" href="../theory/index.html">К теории</a>
+            <a class="btn btn--primary" href="../trainer/index.html">К практике</a>
+          </div>
+        </section>
+
+        <a class="profile-hint-card profile-dict-card" href="../trainer/practice-dictionary.html">
+          <span class="profile-hint-card__icon" aria-hidden="true">📖</span>
+          <span class="profile-hint-card__body">
+            <span class="profile-hint-card__title">Мой словарь</span>
+            <span class="profile-hint-card__desc">Выученные слова · тест и статистика</span>
+          </span>
+          <span class="profile-hint-card__count" data-dict-count>0</span>
+        </a>
+
+        <button type="button" class="profile-hint-card" data-open-hints>
+          <span class="profile-hint-card__icon" aria-hidden="true">💡</span>
+          <span class="profile-hint-card__body">
+            <span class="profile-hint-card__title">Подсказки</span>
+            <span class="profile-hint-card__desc">Покупаются за XP с уровней</span>
+          </span>
+          <span class="profile-hint-card__count" data-hints-count>0</span>
+        </button>
+      </section>
+
+      <div class="lexi-modal" data-hints-modal hidden>
+        <div class="lexi-modal__backdrop" data-hints-close tabindex="-1"></div>
+        <div class="lexi-modal__panel" role="dialog" aria-modal="true" aria-labelledby="hints-modal-title">
+          <button type="button" class="lexi-modal__close" data-hints-close aria-label="Закрыть">×</button>
+          <h2 id="hints-modal-title" class="lexi-modal__title">Купить подсказки</h2>
+          <p class="lexi-modal__lead muted">
+            Сейчас: <strong data-hints-modal-count>0</strong> · XP:
+            <strong data-hints-modal-xp>0</strong>
+          </p>
+          <p class="form-error" data-hints-error hidden></p>
+          <div class="hint-pack-list" data-hint-packs></div>
+        </div>
+      </div>
+
+      <div class="lexi-modal" data-avatar-modal hidden>
+        <div class="lexi-modal__backdrop" data-avatar-close tabindex="-1"></div>
+        <div class="lexi-modal__panel avatar-modal__panel" role="dialog" aria-modal="true" aria-labelledby="avatar-modal-title">
+          <button type="button" class="lexi-modal__close" data-avatar-close aria-label="Закрыть">×</button>
+          <h2 id="avatar-modal-title" class="lexi-modal__title">Фото профиля</h2>
+          <p class="lexi-modal__lead muted">Выбери собаку или загрузи своё фото.</p>
+          <p class="form-error" data-avatar-error hidden></p>
+
+          <div class="avatar-preview">
+            <div class="avatar-preview__frame">
+              <img data-avatar-preview src="../assets/08_happy.svg" alt="" />
+            </div>
+          </div>
+
+          <p class="avatar-section-label">Наши собаки</p>
+          <div class="avatar-dog-grid" data-avatar-dogs></div>
+
+          <p class="avatar-section-label">Своё фото</p>
+          <label class="avatar-upload btn btn--secondary btn--wide">
+            <input type="file" accept="image/*" data-avatar-file hidden />
+            Загрузить с устройства
+          </label>
+
+          <div class="avatar-modal__actions">
+            <button type="button" class="btn btn--ghost" data-avatar-close>Отмена</button>
+            <button type="button" class="btn btn--primary" data-avatar-save>Сохранить</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Настройки -->
+      <section class="auth-card" data-view-settings hidden>
+        <button class="btn btn--ghost settings-back" type="button" data-back-profile>← К профилю</button>
+        <h1 class="auth-card__title">Настройки</h1>
+        <p class="form-error" data-settings-error hidden></p>
+
+        <div class="settings-avatar">
+          <button type="button" class="profile-avatar profile-avatar--lg" data-open-avatar aria-label="Сменить фото профиля">
+            <img class="emoji-dog" data-profile-avatar src="../assets/08_happy.svg" alt="" />
+            <span class="profile-avatar__edit" aria-hidden="true">✎</span>
+          </button>
+          <div class="settings-avatar__text">
+            <strong>Фото профиля</strong>
+            <p class="muted">Собака или своя картинка</p>
+            <button type="button" class="btn btn--secondary" data-open-avatar>Изменить</button>
+          </div>
+        </div>
+
+        <form class="form" data-form-settings>
+          <label class="field">
+            <span>Имя</span>
+            <input name="name" type="text" required />
+          </label>
+          <div class="form-row">
+            <label class="field">
+              <span>Возраст</span>
+              <input name="age" type="number" min="7" max="18" required />
+            </label>
+            <label class="field">
+              <span>Класс</span>
+              <input name="grade" type="number" min="1" max="11" required />
+            </label>
+          </div>
+          <label class="field">
+            <span>Уровень английского</span>
+            <select name="level" required>
+              <option value="A1">A1 — начинающий</option>
+              <option value="A2">A2 — базовый</option>
+              <option value="B1">B1 — средний</option>
+              <option value="B2">B2 — выше среднего</option>
+            </select>
+          </label>
+          <button class="btn btn--primary btn--wide" type="submit">Сохранить</button>
+        </form>
+
+        <button class="btn btn--secondary btn--wide btn--danger" type="button" data-logout>Выйти из профиля</button>
+      </section>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · профиль</footer>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/vocab.js?v=4"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/profile.js?v=5"></script>
+  </body>
+</html>

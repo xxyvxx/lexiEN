@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Подбор — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <div class="lesson-shell" data-match-shell>
+      <header class="lesson-top">
+        <a class="lesson-close" href="practice-match.html" aria-label="Выйти">×</a>
+        <div class="lesson-progress" aria-label="Прогресс">
+          <span data-match-progress style="width: 0%"></span>
+        </div>
+        <div class="match-top-meta">
+          <span class="exam-timer" data-match-timer>02:00</span>
+          <span class="match-score-pill" aria-label="Пары">⭐ <span data-match-score>0</span>/<span data-match-goal>12</span></span>
+        </div>
+      </header>
+
+      <main class="lesson-body match-body" data-match-body>
+        <p class="lesson-label">подбор</p>
+        <h1 class="lesson-prompt">Собери пары вовремя</h1>
+        <p class="muted match-status" data-match-status>Найди пару EN ↔ RU</p>
+        <div class="match-game-board" data-match-board role="grid" aria-label="Поле подбора"></div>
+        <p class="muted match-hint" data-match-hint hidden></p>
+      </main>
+    </div>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/lesson-viewport.js?v=1"></script>
+    <script src="../js/vocab.js?v=4"></script>
+    <script src="../js/match-game.js"></script>
+  </body>
+</html>

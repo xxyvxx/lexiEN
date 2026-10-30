@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Карточки — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <div class="lesson-shell cards-shell">
+      <header class="lesson-top">
+        <a class="lesson-close" href="practice-review.html" aria-label="Выйти">×</a>
+        <div class="lesson-progress" aria-label="Прогресс"><span data-cards-progress style="width: 0%"></span></div>
+        <div class="lesson-lives cards-progress-label" data-cards-count aria-label="Помню из всего">0/0</div>
+      </header>
+
+      <main class="lesson-body cards-body">
+        <div class="cards-toolbar">
+          <button type="button" class="btn btn--secondary cards-dir-btn" data-flip-dir>
+            EN → RU
+          </button>
+          <p class="muted cards-hint">Тап — перевод · вправо помню · влево ещё раз</p>
+        </div>
+
+        <div class="cards-stage" data-cards-stage>
+          <button type="button" class="cards-edge cards-edge--no" data-edge-no aria-label="Ещё раз — влево">
+            <span aria-hidden="true">✕</span>
+          </button>
+          <div class="flash-card" data-flash-card tabindex="0" aria-live="polite">
+            <div class="flash-card__inner" data-card-inner>
+              <div class="flash-card__face flash-card__face--front">
+                <span class="flash-card__lang" data-front-lang>EN</span>
+                <p class="flash-card__text" data-front-text></p>
+                <span class="flash-card__tap muted">нажми, чтобы перевернуть</span>
+              </div>
+              <div class="flash-card__face flash-card__face--back">
+                <span class="flash-card__lang" data-back-lang>RU</span>
+                <p class="flash-card__text" data-back-text></p>
+              </div>
+            </div>
+            <div class="flash-card__stamp flash-card__stamp--yes" aria-hidden="true">Помню</div>
+            <div class="flash-card__stamp flash-card__stamp--no" aria-hidden="true">Ещё раз</div>
+          </div>
+          <button type="button" class="cards-edge cards-edge--yes" data-edge-yes aria-label="Помню — вправо">
+            <span aria-hidden="true">✓</span>
+          </button>
+        </div>
+
+        <div class="cards-actions">
+          <button type="button" class="cards-action cards-action--no" data-card-no aria-label="Не помню">✕</button>
+          <button type="button" class="cards-action cards-action--yes" data-card-yes aria-label="Помню">✓</button>
+        </div>
+      </main>
+    </div>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/lesson-viewport.js?v=1"></script>
+    <script src="../js/card-gestures.js"></script>
+    <script src="../js/flashcards.js"></script>
+  </body>
+</html>

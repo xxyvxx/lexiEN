@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Теория — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark"><img src="../assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a class="is-active" href="index.html">Теория</a></li>
+          <li><a href="../trainer/index.html">Тренажёр</a></li>
+          <li><a href="../profile/index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page">
+      <div class="section-head">
+        <div>
+          <h1>Теория</h1>
+          <p class="lead">Выбери тему, прочитай правила — и сразу потренируйся.</p>
+        </div>
+      </div>
+
+      <div class="topic-grid" data-theory-list></div>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · теория</footer>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/theory-data.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      const list = document.querySelector("[data-theory-list]");
+      list.innerHTML = LexiTheory.topics
+        .map((topic) => {
+          const progress = LexiTheory.getProgress(topic.id);
+          return `
+            <article class="topic-item topic-item--link" data-topic-id="${topic.id}">
+              <a class="topic-item__hit" href="topic.html?id=${topic.id}" aria-label="Открыть теорию: ${topic.title}">
+                <div class="topic-item__top">
+                  <h3>${topic.title}</h3>
+                </div>
+                <p class="muted">${topic.short}</p>
+                <div class="topic-item__progress" aria-label="Прогресс по теме: ${progress}%">
+                  <div class="progress-mini">
+                    <span data-topic-progress style="width: ${progress}%"></span>
+                  </div>
+                  <span class="topic-item__progress-value">${progress}%</span>
+                </div>
+              </a>
+              <a class="btn btn--primary" href="../trainer/index.html?topic=${topic.id}">Тренажёр</a>
+            </article>
+          `;
+        })
+        .join("");
+    </script>
+  </body>
+</html>

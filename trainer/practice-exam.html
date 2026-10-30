@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Как на контрольной — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark"><img src="../assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a class="is-active" href="index.html">Тренажёр</a></li>
+          <li><a href="../profile/index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--narrow">
+      <div class="section-head">
+        <div>
+          <h1>Как на контрольной</h1>
+          <p class="lead">Смешанный тест из твоего прогресса.</p>
+        </div>
+        <a class="btn btn--secondary" href="index.html?tab=practice">← К практике</a>
+      </div>
+
+      <section class="panel exam-lobby" data-exam-lobby>
+        <p class="exam-pool-meta muted" data-exam-pool-meta></p>
+
+        <div class="exam-level-grid" data-exam-levels></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · контрольная</footer>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/vocab-packs.js"></script>
+    <script src="../js/audio-quiz-data.js"></script>
+    <script src="../js/theory-quiz-data.js"></script>
+    <script src="../js/lesson-content.js?v=2"></script>
+    <script src="../js/exam-pool.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      const levelsRoot = document.querySelector("[data-exam-levels]");
+      const meta = document.querySelector("[data-exam-pool-meta]");
+      const total = LexiExamPool.getUnlockCount();
+      const min = LexiExamPool.MIN;
+
+      if (meta) {
+        meta.textContent =
+          total >= min
+            ? `Доступно заданий: ${total}`
+            : `Нужно ещё материал (${total} из ${min})`;
+      }
+
+      if (total < min) {
+        levelsRoot.innerHTML = `
+          <div class="exam-locked">
+            <img src="../assets/04_sleeping.svg" alt="" />
+            <h2>Контрольная ещё закрыта</h2>
+            <p class="muted">Нужно хотя бы ${min} заданий из прогресса. Новый аккаунт и нули по тренажёрам — кнопки не будет.</p>
+            <a class="btn btn--primary" href="index.html?tab=practice">К практике</a>
+          </div>`;
+      } else {
+        const overall = LexiStore.getExamOverallProgress(LexiExamPool.LEVELS.map((l) => l.id));
+        if (meta) {
+          meta.textContent = `В пуле ${total} заданий · прогресс контрольной ${overall.percent}% · зачёт ${overall.passed}/${overall.total}`;
+        }
+
+        levelsRoot.innerHTML = LexiExamPool.LEVELS.map((level) => {
+          const { count, ready } = LexiExamPool.levelAvailability(level.id);
+          const prog = LexiStore.getExamLevelProgress(level.id);
+          const href = ready
+            ? `exam.html?level=${encodeURIComponent(level.id)}&minutes=${level.minutes}&count=${level.count}`
+            : "#";
+          const metaLine = !ready
+            ? `Мало для уровня (нужно ${min}, есть ${count})`
+            : prog.attempts
+              ? `Лучший ${prog.best}%${prog.passed ? " · зачёт" : ""} · попыток ${prog.attempts}`
+              : `${level.count} заданий · ${level.minutes} мин · пул ${count}`;
+          return `
+            <a class="exam-level-card ${ready ? "" : "is-disabled"} ${prog.passed ? "is-passed" : ""}" href="${href}" ${ready ? "" : 'aria-disabled="true"'}>
+              <span class="exam-level-card__title">${level.title}</span>
+              <span class="exam-level-card__desc">${level.desc}</span>
+              <span class="exam-level-card__bar" aria-hidden="true"><span style="width: ${prog.percent}%"></span></span>
+              <span class="exam-level-card__meta">${metaLine}</span>
+            </a>`;
+        }).join("");
+
+        levelsRoot.querySelectorAll(".exam-level-card.is-disabled").forEach((el) => {
+          el.addEventListener("click", (e) => e.preventDefault());
+        });
+      }
+    </script>
+  </body>
+</html>

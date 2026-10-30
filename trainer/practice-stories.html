@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Рассказы — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark"><img src="../assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a class="is-active" href="index.html">Тренажёр</a></li>
+          <li><a href="../profile/index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--narrow">
+      <div class="section-head">
+        <div>
+          <h1>Рассказы</h1>
+          <p class="lead">Выбери темы и читай — в конце короткий тест.</p>
+        </div>
+        <a class="btn btn--secondary" href="index.html?tab=practice">← К практике</a>
+      </div>
+
+      <section class="panel">
+        <h2 class="story-hub__label">Темы</h2>
+        <div class="story-topic-row" data-story-topics></div>
+        <h2 class="story-hub__label">Рассказы</h2>
+        <div class="story-list" data-story-list></div>
+        <div class="empty-state" data-story-empty hidden>
+          <img class="emoji-dog" src="../assets/04_sleeping.svg" alt="" />
+          <p>Выбери хотя бы одну тему.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · рассказы</footer>
+    <script src="../js/stories-data.js"></script>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/stories-hub.js"></script>
+  </body>
+</html>

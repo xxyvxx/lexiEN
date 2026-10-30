@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Мой словарь — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark"><img src="../assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a href="index.html">Тренажёр</a></li>
+          <li><a class="is-active" href="../profile/index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--narrow">
+      <div class="section-head">
+        <div>
+          <h1>Мой словарь</h1>
+          <p class="lead">Выученные слова для статистики и теста.</p>
+        </div>
+        <a class="btn btn--secondary" href="../profile/index.html">← К профилю</a>
+      </div>
+
+      <section class="panel">
+        <div class="dict-stats" data-dict-stats hidden>
+          <div class="dict-stat">
+            <strong data-dict-total>0</strong>
+            <span>всего</span>
+          </div>
+          <div class="dict-stat">
+            <strong data-dict-ok>0</strong>
+            <span>ок</span>
+          </div>
+          <div class="dict-stat dict-stat--fail">
+            <strong data-dict-failed>0</strong>
+            <span>не пройдено</span>
+          </div>
+        </div>
+
+        <div class="review-actions" data-dict-actions hidden>
+          <a class="btn btn--primary btn--wide" href="dictionary-quiz.html">Начать тестирование</a>
+          <p class="muted review-actions__hint">Ошибка в тесте пометит слово красным и добавит в «Ошибки».</p>
+        </div>
+
+        <div class="word-list" data-dict-list></div>
+        <div class="empty-state" data-dict-empty>
+          <img class="emoji-dog" src="../assets/05_detective.svg" alt="" />
+          <p>Пока пусто — слова появятся после верных ответов в уровнях, изучении слов или из «Повторить».</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · словарь</footer>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/dictionary-hub.js?v=1"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>На слух — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <div class="lesson-shell">
+      <header class="lesson-top">
+        <a class="lesson-close" href="practice-audio.html" aria-label="Выйти">×</a>
+        <div class="lesson-progress" aria-label="Прогресс"><span data-audio-progress style="width: 0%"></span></div>
+        <div class="lesson-lives" data-audio-count aria-label="Осталось">0</div>
+      </header>
+
+      <main class="lesson-body audio-body">
+        <p class="audio-round-title" data-audio-title></p>
+        <p class="audio-status muted" data-audio-status>Слушай слово и выбери написание</p>
+
+        <button type="button" class="audio-play" data-audio-play aria-label="Прослушать снова">
+          <span class="audio-play__icon" aria-hidden="true">▶</span>
+          <span data-audio-play-label>Слушать</span>
+        </button>
+
+        <div class="audio-choices" data-audio-choices>
+          <button type="button" class="audio-choice" data-choice></button>
+          <button type="button" class="audio-choice" data-choice></button>
+        </div>
+
+        <p class="audio-feedback muted" data-audio-feedback hidden></p>
+      </main>
+    </div>
+
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/lesson-viewport.js?v=1"></script>
+    <script src="../js/speak.js"></script>
+    <script src="../js/audio-quiz-data.js"></script>
+    <script src="../js/audio-quiz.js"></script>
+  </body>
+</html>

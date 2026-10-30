@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Лэкси — тренажёр английского для школьников</title>
+    <meta
+      name="description"
+      content="Лэкси — учебный тренажёр английского: теория, уровни-практика и профиль с повторением слов."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="index.html">
+          <span class="brand__mark"><img src="assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a class="is-active" href="index.html">Главная</a></li>
+          <li><a href="theory/index.html">Теория</a></li>
+          <li><a href="trainer/index.html">Тренажёр</a></li>
+          <li><a href="profile/index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page">
+      <section class="hero" aria-labelledby="hero-brand">
+        <div class="hero__grid">
+          <div>
+            <p class="eyebrow">для школьников · 5–9 класс</p>
+            <h1 class="hero__brand" id="hero-brand">Лэкси <span>EN</span></h1>
+            <p class="hero__title">Английский через практику — как в игре, но по школьной программе</p>
+            <p class="hero__text">
+              Теория, уровни, рассказы и повторение слов — коротко и по школьной программе.
+            </p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="trainer/index.html">Начать тренажёр</a>
+              <a class="btn btn--secondary" href="theory/index.html">Открыть теорию</a>
+            </div>
+          </div>
+          <div class="hero__art" aria-hidden="true">
+            <div class="hero__stage">
+              <div class="hero__blob"></div>
+              <img class="hero__dog" src="assets/08_happy.svg" alt="" />
+              <div class="hero__face hero__face--left">
+                <img src="assets/03_winking.svg" alt="" />
+              </div>
+              <div class="hero__face hero__face--right">
+                <img src="assets/07_shocked.svg" alt="" />
+              </div>
+              <div class="hero__chip"><strong>+10 XP</strong> · верно!</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features" aria-label="Разделы сайта">
+        <a class="feature" href="theory/index.html">
+          <div class="feature__icon"><img src="assets/05_detective.svg" alt="" /></div>
+          <h3>Теория</h3>
+          <p>Короткие объяснения тем: времена, слова, конструкции — перед практикой.</p>
+        </a>
+        <a class="feature" href="trainer/index.html">
+          <div class="feature__icon"><img src="assets/03_winking.svg" alt="" /></div>
+          <h3>Тренажёр</h3>
+          <p>Закрепляй материал в игре — коротко, понятно и без скуки.</p>
+        </a>
+        <a class="feature" href="profile/index.html">
+          <div class="feature__icon"><img src="assets/02_in_love.svg" alt="" /></div>
+          <h3>Профиль</h3>
+          <p>Твой уголок прогресса — заглядывай, когда захочется себя похвалить.</p>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · учебный тренажёр английского</footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>

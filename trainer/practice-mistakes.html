@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Ошибки — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark"><img src="../assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a class="is-active" href="index.html">Тренажёр</a></li>
+          <li><a href="../profile/index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--narrow">
+      <div class="section-head">
+        <div>
+          <h1>Ошибки</h1>
+          <p class="lead">Задания, которые не вышли со второй попытки.</p>
+        </div>
+        <a class="btn btn--secondary" href="index.html?tab=practice">← К практике</a>
+      </div>
+
+      <section class="panel">
+        <div class="review-actions" data-mistakes-actions hidden>
+          <a class="btn btn--primary btn--wide" href="mistakes.html">Случайный тест</a>
+          <p class="muted review-actions__hint">До 20 заданий из всех тем. Или выбери тему / одно задание ниже.</p>
+        </div>
+        <div class="mistake-list" data-mistakes-list></div>
+        <div class="empty-state" data-mistakes-empty>
+          <img class="emoji-dog" src="../assets/06_crying.svg" alt="" />
+          <p>Пока пусто — ошибки появятся, если задание не выйдет со 2-й попытки.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · ошибки</footer>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/theory-data.js"></script>
+    <script src="../js/practice-hub.js?v=6"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      LexiPracticeHub.renderMistakes();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Теория — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark"><img src="../assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a class="is-active" href="index.html">Теория</a></li>
+          <li><a href="../trainer/index.html">Тренажёр</a></li>
+          <li><a href="../profile/index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page">
+      <div class="section-head">
+        <div>
+          <h1 data-topic-title>Тема</h1>
+          <p class="lead" data-topic-lead></p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--secondary" href="index.html">Все темы</a>
+          <a class="btn btn--secondary" data-topic-quiz href="quiz.html"><span data-quiz-label>Тест по теме</span></a>
+          <a class="btn btn--primary" data-topic-practice href="../trainer/index.html">Тренажёр</a>
+        </div>
+      </div>
+
+      <div class="theory-layout">
+        <aside class="theory-nav" data-theory-toc aria-label="Оглавление темы">
+          <button
+            type="button"
+            class="theory-nav__toggle"
+            data-theory-toc-toggle
+            aria-expanded="true"
+            aria-controls="theory-toc-list"
+          >
+            <span>В этой теме</span>
+          </button>
+          <ul id="theory-toc-list" data-topic-nav></ul>
+        </aside>
+        <article class="theory-panel" data-topic-body></article>
+      </div>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · теория</footer>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/theory-data.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const id = params.get("id") || "present-simple";
+      const topic = LexiTheory.get(id);
+
+      if (!topic) {
+        document.querySelector("[data-topic-title]").textContent = "Тема не найдена";
+        document.querySelector("[data-topic-body]").innerHTML =
+          '<p class="muted">Вернись к <a href="index.html">списку тем</a>.</p>';
+      } else {
+        document.title = `${topic.title} — теория · Лэкси EN`;
+        document.querySelector("[data-topic-title]").textContent = topic.title;
+        document.querySelector("[data-topic-lead]").textContent = topic.short;
+        document.querySelector("[data-topic-practice]").href = `../trainer/index.html?topic=${topic.id}`;
+        const quizBtn = document.querySelector("[data-topic-quiz]");
+        quizBtn.href = `quiz.html?topic=${topic.id}`;
+        const quizResult = LexiStore?.getTheoryQuizResult?.(topic.id);
+        const quizLabel = quizBtn.querySelector("[data-quiz-label]");
+        if (quizResult?.status === "passed") {
+          quizBtn.classList.remove("btn--secondary", "btn--quiz-fail");
+          quizBtn.classList.add("btn--quiz-pass");
+          if (quizLabel) quizLabel.textContent = `Тест пройден · ${quizResult.percent}%`;
+        } else if (quizResult?.status === "failed") {
+          quizBtn.classList.remove("btn--secondary", "btn--quiz-pass");
+          quizBtn.classList.add("btn--quiz-fail");
+          if (quizLabel) quizLabel.textContent = `Тест не сдан · ${quizResult.percent}%`;
+        }
+
+        document.querySelector("[data-topic-nav]").innerHTML = topic.sections
+          .map(
+            (s, i) =>
+              `<li><a href="#${s.id}" class="${i === 0 ? "is-active" : ""}">${s.title}</a></li>`
+          )
+          .join("");
+
+        document.querySelector("[data-topic-body]").innerHTML = topic.sections
+          .map(
+            (s) => `
+            <section id="${s.id}" class="theory-section">
+              <h2>${s.title}</h2>
+              ${s.html}
+            </section>
+          `
+          )
+          .join("");
+
+        const links = document.querySelectorAll("[data-topic-nav] a");
+        const sections = [...document.querySelectorAll(".theory-section")];
+        const toc = document.querySelector("[data-theory-toc]");
+        const tocToggle = document.querySelector("[data-theory-toc-toggle]");
+        const tocMq = window.matchMedia("(max-width: 860px)");
+        let tocScrollY = window.scrollY;
+
+        const setTocOpen = (open) => {
+          if (!toc || !tocToggle) return;
+          if (!tocMq.matches) {
+            toc.classList.remove("is-open");
+            tocToggle.setAttribute("aria-expanded", "true");
+            return;
+          }
+          toc.classList.toggle("is-open", open);
+          tocToggle.setAttribute("aria-expanded", String(open));
+          if (open) tocScrollY = window.scrollY;
+        };
+
+        tocToggle?.addEventListener("click", () => {
+          if (!tocMq.matches) return;
+          setTocOpen(!toc.classList.contains("is-open"));
+        });
+
+        links.forEach((a) => {
+          a.addEventListener("click", () => setTocOpen(false));
+        });
+
+        const setActive = () => {
+          let current = sections[0]?.id;
+          for (const section of sections) {
+            if (section.getBoundingClientRect().top <= 120) current = section.id;
+          }
+          links.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === `#${current}`));
+        };
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            setActive();
+            if (tocMq.matches && toc?.classList.contains("is-open")) {
+              if (Math.abs(window.scrollY - tocScrollY) > 28) setTocOpen(false);
+            }
+          },
+          { passive: true }
+        );
+
+        tocMq.addEventListener?.("change", () => setTocOpen(false));
+        setTocOpen(false);
+        setActive();
+      }
+    </script>
+  </body>
+</html>

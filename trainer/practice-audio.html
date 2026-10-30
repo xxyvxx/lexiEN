@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>На слух — Лэкси EN</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/concept.css" />
+  </head>
+  <body class="concept">
+    <a class="skip-link" href="#main">К содержимому</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Главная навигация">
+        <a class="brand" href="../index.html">
+          <span class="brand__mark"><img src="../assets/08_happy.svg" alt="" /></span>
+          <span class="brand__text">Лэкси <span>EN</span></span>
+        </a>
+        <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" data-nav-links>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a class="is-active" href="index.html">Тренажёр</a></li>
+          <li><a href="../profile/index.html">Профиль</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="page page--narrow">
+      <div class="section-head">
+        <div>
+          <h1>На слух</h1>
+          <p class="lead">Тренируй понимание на слух и учись различать звуки английского.</p>
+        </div>
+        <a class="btn btn--secondary" href="index.html?tab=practice">← К практике</a>
+      </div>
+
+      <section class="panel sounds-hub">
+        <div class="sounds-hero">
+          <h2 class="sounds-hero__title">Звуки английского</h2>
+          <p class="sounds-hero__desc">Общий тест или одна карточка звука.</p>
+          <a class="btn btn--primary btn--wide" href="audio.html?mode=all&amp;count=12">Начать общее тестирование</a>
+        </div>
+
+        <div class="sounds-section">
+          <h3 class="sounds-section__title">Гласные</h3>
+          <div class="sounds-grid" data-sounds-vowels></div>
+        </div>
+
+        <div class="sounds-section">
+          <h3 class="sounds-section__title">Согласные</h3>
+          <div class="sounds-grid" data-sounds-consonants></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">Лэкси EN · на слух</footer>
+    <script src="../js/storage.js?v=8"></script>
+    <script src="../js/audio-quiz-data.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      const goal = LexiAudioQuiz.GOAL || 8;
+
+      function cardHtml(sound) {
+        const { percent } = LexiStore.getAudioSoundProgress(sound.id, goal);
+        return `
+          <a class="sound-card" href="audio.html?sound=${encodeURIComponent(sound.id)}&amp;count=8">
+            <span class="sound-card__ipa">${sound.ipa}</span>
+            <span class="sound-card__example">${sound.example}</span>
+            <span class="sound-card__bar" aria-label="Прогресс ${percent}%"><span style="width: ${percent}%"></span></span>
+          </a>
+        `;
+      }
+
+      const vowels = (LexiAudioQuiz.sounds || []).filter((s) => s.group === "vowels");
+      const consonants = (LexiAudioQuiz.sounds || []).filter((s) => s.group === "consonants");
+      const vRoot = document.querySelector("[data-sounds-vowels]");
+      const cRoot = document.querySelector("[data-sounds-consonants]");
+      if (vRoot) vRoot.innerHTML = vowels.map(cardHtml).join("");
+      if (cRoot) cRoot.innerHTML = consonants.map(cardHtml).join("");
+    </script>
+  </body>
+</html>
